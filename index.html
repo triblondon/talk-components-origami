@@ -41,7 +41,7 @@
 					<p>
 						<small>by Andrew Betts, FT Labs (<a href="http://trib.tv">trib.tv</a> / <a href="http://twitter.com/triblondon">@triblondon</a>)</small>
 					</p>
-					<aside class='notes'>Companies that need a lot of tech usually also have a lot of tech problems, many of our own making.  At the FT, particularly true of web front ends over the last ten years.  We have some really good ones, some very poor, all inconsistent. </aside>
+					<aside class='notes'>This talk is about Origami, 9 month project at the FT to design a new way of making websites with components.</aside>
 				</section>
 
 				<section>
@@ -64,7 +64,7 @@
 				</section>
 
 				<section data-background='content/complicatedchart.jpg'>
-					<aside class="notes">Learning cliff for newbies</aside>
+					<aside class="notes">Sometimes I feel that things are so complicated that a new developer has no chance of getting their head around it.</aside>
 				</section>
 
 				<section>
@@ -76,11 +76,6 @@
 					<blockquote>"It won't work in the <strong>web app</strong>"</blockquote>
 					<cite>--Everyone</cite>
 					<aside class='notes'>But we must be doing something wrong if this is the most popular expression in editorial.</aside>
-				</section>
-
-				<section>
-					<img src='content/brokenblog.png' class='stretch' />
-					<aside class="notes">Sometimes forcing integration between systems not designed to work together causes really bad problems.  Fortunately not very often.</aside>
 				</section>
 
 				<section>
@@ -96,25 +91,26 @@
 				<section>
 					<h2>Living style guides</h2>
 					<img src='content/codeforamerica.png' class='stretch' />
-					<aside class="notes">Code for America, design by ClearLeft</aside>
+					<aside class="notes">Living style guides provide reference implementations of UI designs so everyone is using the same code.  Already moving in the rigth direction.  (Code for America design by ClearLeft)</aside>
 				</section>
 
 				<section>
 					<h2>Component frameworks</h2>
 					<img src='content/react.png' class='stretch' />
 					<p>Also our own <a href='https://github.com/ftlabs/fruitmachine'>Fruit Machine</a></p>
-					<aside class="notes"></aside>
+					<aside class="notes">Start with separating style from content, then behaviour, now we're grouping chunks of markup, style and behaviour into discrete units of functionality (making the building blocks bigger)</aside>
 				</section>
 
 				<section>
 					<h2>Web components</h2>
 					<img src='content/webcomponents.png' class='stretch' style='box-shadow:none' />
-					<aside class="notes"></aside>
+					<aside class="notes">coming, but not here yet.  We need to be ready.</aside>
 				</section>
 
 				<section data-state='rwd-demo'>
 					<h2>Responsive media sites</h2>
 					<iframe id='guardianiframe' src='http://www.theguardian.com/uk?view=mobile' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
+					<aside class="notes">Many media companies already have responsive websites, Guardian a great example that we looked at in detail.</aside>
 				</section>
 
 				<section>
@@ -139,12 +135,12 @@
 
 				<section data-background='content/monolith.png'>
 					<h1 class='glow'>2. Don't build a monolith</h1>
-					<aside class='notes'>A lot of things we looked at were big, centralised solutions.</aside>
+					<aside class='notes'>A lot of things we looked at were big, centralised solutions.  I've learned over the years that if you make a 'core' thing and make it a dependency of everything you do, it becomes a liability.</aside>
 				</section>
 
 				<section data-background='content/evolutionweb.png'>
 					<h1 class='glow'>3. Raise the bar</h1>
-					<aside class='notes'>Current bar: noscript.  Progressive enhance, from where?  Choose a new baseline a few years old.  Uber compatible experience below that.</aside>
+					<aside class='notes'>Current bar: noscript.  Progressive enhance, from where?  Choose a new baseline a few years old.  Rolling window of support for primary functionality.</aside>
 				</section>
 
 				<section data-background='content/bigredbutton.jpg'>
@@ -173,7 +169,7 @@
 				<section>
 					<h2>A build toolchain</h2>
 					<img src='content/buildchain.svg' class='stretch' style='box-shadow:none' />
-					<aside class='notes'>Don't want to dwell too long on these choices.  Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
+					<aside class='notes'>Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
 				</section>
 
 				<section>
@@ -202,8 +198,8 @@
 					<p>Build every version of every module</p>
 					<p>Collect all the info on one page</p>
 					<p>Act as a directory of web services</p>
-					<p>Origami registry is <a href='http://registry.origami.ft.com'>public on the web</a> so anyone can collaboate with us</p>
-					<aside class='notes'>Move into demo - colors, header, tweet, responsive image</aside>
+					<p>Origami registry is <a href='http://registry.origami.ft.com'>public on the web</a> so anyone can collaborate with us</p>
+					<aside class='notes'>Move into demo - colors, header, tweet, responsive image service</aside>
 				</section>
 
 				<section>
@@ -211,7 +207,6 @@
 					<p>Build any combo of modules <strong>on demand</strong></p>
 					<p>Build, bundle, compress, serve through CDN.</p>
 					<p>Allow developers to work <strong>without a build step</strong></p>
-					<aside class='notes'>Demo of web service</aside>
 				</section>
 
 				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-purple-yellow.jpg'>
@@ -299,23 +294,18 @@ if (Modernizr.classlist && Modernizr.queryselector) {
 				</section>
 
 				<section>
-					<section>
-						<h2>Hover</h2>
-						<p>What should a component do about hover-state?  What if the component is loaded on a touch screen?</p>
-						<pre><code data-trim>
+					<h2>Hover</h2>
+					<p>What should a component do about hover-state?  What if the component is loaded on a touch screen?</p>
+					<pre><code data-trim>
 import 'o-hoverable/main';
 $o-hoverable-if-hover-enabled a:hover { ... }
-						</code></pre>
-						<pre><code data-trim>
+					</code></pre>
+					<pre><code data-trim>
 &lt;body class='o-hoverable-on'>
- ...
+...
 &lt;/body>
-						</code></pre>
-						<p><i class='icon-arrow-down'></i> <a href="#" class="navigate-down">Live demo</a> (ooo err)</p>
-					</section>
-					<section>
-						<iframe src='https://dl.dropboxusercontent.com/u/2272348/codez/expensivescroll/demo.html' class='stretch'></iframe>
-					</section>
+					</code></pre>
+					<p><i class='icon-arrow-down'></i> <a href="#" class="navigate-down">Live demo</a> (ooo err)</p>
 				</section>
 
 				<section>
