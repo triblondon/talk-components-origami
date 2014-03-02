@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Components and modules - Andrew Betts</title>
+
+		<meta name="description" content="A presentation about the FT's new Origami component strategy">
+		<meta name="author" content="Andrew Betts">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/ftlabs.css" id="theme">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+	<div class='pointer'></div>
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
+					<h1>Introducing Origami</h1>
+					<h3>Components and modules for front end sanity at scale</h3>
+					<p>
+						<small>by Andrew Betts, FT Labs (<a href="http://trib.tv">trib.tv</a> / <a href="http://twitter.com/triblondon">@triblondon</a>)</small>
+					</p>
+					<aside class='notes'>Companies that need a lot of tech usually also have a lot of tech problems, many of our own making.  At the FT, particularly true of web front ends over the last ten years.  We have some really good ones, some very poor, all inconsistent. </aside>
+				</section>
+
+				<section>
+					<p><img src='content/origami.png' class='stretch' style='box-shadow:none' /></p>
+					<aside class="notes">Now each web project is becoming more complex, our brand is increasingly a digital one, and people are interacting with it on a greater range of devices, increasing our testing cost.</aside>
+				</section>
+
+				<section data-state="chart1">
+					<h2>Paid readership, digital vs print</h2>
+					<div class='stretch'>
+						<canvas id="chart1" style='width:100%; height:100%'></canvas>
+					</div>
+					<aside class='notes'>Problem that needs to be solved, because we're now a digital news publisher first, and a newspaper second.</aside>
+				</section>
+
+				<section>
+					<!-- TODO: Annotations -->
+					<img src='content/article.png' class='stretch' />
+					<aside class="notes">Experts needed everywhere - a typical page has stuff on it from lots of teams.  Too much political encapulation, not enough technical encapsulation</aside>
+				</section>
+
+				<section data-background='content/complicatedchart.jpg'>
+					<aside class="notes">Learning cliff for newbies</aside>
+				</section>
+
+				<section>
+					<img src='content/marketsdata-twice.jpg' class='stretch' style='max-width:100%' />
+					<aside class="notes">Lack of integration between things, often means stuff has to be done twice.  At least we only build web things, some people build the same things natively too.</aside>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/red-blue.jpg'>
+					<blockquote>"It won't work in the <strong>web app</strong>"</blockquote>
+					<cite>--Everyone</cite>
+					<aside class='notes'>But we must be doing something wrong if this is the most popular expression in editorial.</aside>
+				</section>
+
+				<section>
+					<img src='content/brokenblog.png' class='stretch' />
+					<aside class="notes">Sometimes forcing integration between systems not designed to work together causes really bad problems.  Fortunately not very often.</aside>
+				</section>
+
+				<section>
+					<h2>Problems</h2>
+					<ul>
+						<li>Systems not designed to work together / resistant to integration</li>
+						<li>Duplication</li>
+						<li>Experts needed everywhere</li>
+						<li>Learning cliff for newbies</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Living style guides</h2>
+					<img src='content/codeforamerica.png' class='stretch' />
+					<aside class="notes">Code for America, design by ClearLeft</aside>
+				</section>
+
+				<section>
+					<h2>Component frameworks</h2>
+					<img src='content/react.png' class='stretch' />
+					<p>Also our own <a href='https://github.com/ftlabs/fruitmachine'>Fruit Machine</a></p>
+					<aside class="notes"></aside>
+				</section>
+
+				<section>
+					<h2>Web components</h2>
+					<img src='content/webcomponents.png' class='stretch' style='box-shadow:none' />
+					<aside class="notes"></aside>
+				</section>
+
+				<section data-state='rwd-demo'>
+					<h2>Responsive media sites</h2>
+					<iframe id='guardianiframe' src='http://www.theguardian.com/uk?view=mobile' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
+				</section>
+
+				<section>
+					<h2>Objectives (no-brainer edition)</h2>
+					<ul>
+						<li>Build a living style guide</li>
+						<li>MORE collaboration</li>
+						<li>MORE technical encapsulation (components!)</li>
+						<li>Be forwards-compatible with web components</li>
+						<li>Do that responsive malarky</li>
+					</ul>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/purple-blue.jpg'>
+					<h1>Going further</h1>
+				</section>
+
+				<section data-background='content/legacy.jpg'>
+					<h1 class='glow'>1. Rescue the old stuff</h1>
+					<aside class='notes'>We have 600 domains, 800 subdomains of ft.com.  We have millions of readers who like those sites, so we should be able to apply the benefits of the new stuff to those older sites.</aside>
+				</section>
+
+				<section data-background='content/monolith.png'>
+					<h1 class='glow'>2. Don't build a monolith</h1>
+					<aside class='notes'>A lot of things we looked at were big, centralised solutions.</aside>
+				</section>
+
+				<section data-background='content/evolutionweb.png'>
+					<h1 class='glow'>3. Raise the bar</h1>
+					<aside class='notes'>Current bar: noscript.  Progressive enhance, from where?  Choose a new baseline a few years old.  Uber compatible experience below that.</aside>
+				</section>
+
+				<section data-background='content/bigredbutton.jpg'>
+					<h1 class='glow'>4. Make it easy</h1>
+					<aside class='notes'>Hate: frameworks, opinionated solutions, 'beautiful' things.  Love: Tools to support standards.  Make it push-button easy to use the standard stuff</aside>
+				</section>
+
+				<section>
+					<h1 style='color: #F7DCC3;font-weight: normal;font-size: 85px;text-shadow: 3px 0px 6px rgb(104, 83, 64);font-family: "Open sans";'><img src="data:image/svg+xml;utf-8,<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='188' height='61' viewBox='0 0 188 61' preserveAspectRatio='xMidYMid meet'><g transform='translate(0,61) scale(0.1,-0.1)' fill='%233b3b3b' stroke='none'><path d='M40 580 c0 -5 7 -10 15 -10 8 0 24 -9 35 -20 19 -19 20 -33 20 -239 0 -234 -3 -251 -51 -251 -10 0 -19 -7 -19 -15 0 -13 21 -15 130 -15 109 0 130 2 130 15 0 9 -9 15 -24 15 -47 0 -56 22 -56 140 l0 109 48 -5 c62 -6 89 -21 101 -55 20 -57 31 -31 31 71 0 82 -3 100 -15 100 -8 0 -15 -9 -15 -19 0 -31 -38 -51 -98 -51 l-53 0 3 98 3 97 77 3 c102 4 138 -6 163 -46 32 -50 46 -41 44 28 l-2 60 -233 0 c-149 0 -234 -4 -234 -10z' /><path d='M540 568 c-1 -13 -3 -40 -6 -60 -4 -30 -2 -38 10 -38 8 0 21 12 28 27 17 36 52 53 111 53 l47 0 0 -229 c0 -249 -3 -261 -56 -261 -15 0 -24 -6 -24 -15 0 -13 22 -15 135 -15 113 0 135 2 135 15 0 9 -9 15 -24 15 -53 0 -56 12 -56 261 l0 229 54 0 c57 0 99 -23 111 -60 4 -11 13 -20 22 -20 13 0 14 9 9 53 -3 28 -6 55 -6 60 0 4 -110 7 -245 7 l-245 0 0 -22z' /><path d='M1405 577 c-27 -7 -57 -27 -92 -64 -29 -29 -61 -53 -72 -53 -21 0 -71 -53 -71 -75 0 -28 61 -85 89 -85 34 0 75 41 77 78 2 49 36 40 89 -23 l48 -56 32 31 33 32 -58 51 c-32 29 -59 60 -59 69 -1 26 39 48 86 48 35 0 43 3 43 19 0 14 -12 22 -44 30 -51 12 -47 13 -101 -2z' fill='%23787067' /><path d='M1693 575 c-40 -17 -67 -67 -60 -111 5 -31 0 -38 -141 -166 -80 -73 -155 -140 -165 -149 -41 -33 -11 -109 43 -109 22 0 53 29 176 165 143 158 151 165 187 165 75 0 117 42 117 117 l0 35 -40 -36 c-42 -37 -48 -40 -74 -30 -27 10 -18 48 19 84 31 30 33 35 18 42 -27 10 -45 9 -80 -7z' fill='%23525252' /><path d='M1601 243 c-17 -21 -30 -42 -28 -46 7 -23 125 -147 149 -157 45 -20 93 23 81 71 -3 10 -42 52 -88 93 l-83 76 -31 -37z' fill='%23787067' /></g></svg>" style="vertical-align: middle;box-shadow: none;display: block;margin: 0 auto 15px auto;width: 300px;" /> Origami</h1>
+				</section>
+
+				<section>
+					<h2>Origami is...</h2>
+					<p>A spec (<a href='http://origami.ft.com'>origami.ft.com</a>)</p>
+					<p>A registry of components</p>
+					<p>A build-on-demand service</p>
+					<p>Hundreds of module and service components</p>
+					<p><strong>Not</strong> a framework</p>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>The spec</h1>
+					<blockquote>Standards for building modules and services</blockquote>
+				</section>
+
+				<section>
+					<h2>A build toolchain</h2>
+					<img src='content/buildchain.svg' class='stretch' style='box-shadow:none' />
+					<aside class='notes'>Don't want to dwell too long on these choices.  Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
+				</section>
+
+				<section>
+					<h2>Decentralised and distributed</h2>
+					<ul>
+						<li>Host your git repo anywhere</li>
+						<li>No single 'core' or 'common' codebase</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Browser support standards</h2>
+					<img src='content/browsersupport.svg' class='stretch' style='box-shadow:none' />
+					<aside class='notes'>Set a CTM test for each product, above is primary, below is core.</aside>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>The tools</h1>
+					<blockquote><strong>Make it easy</strong> to comply with the spec requirements</blockquote>
+				</section>
+
+				<section>
+					<h2>Registry</h2>
+					<p>Scan known git servers</p>
+					<p>Index version tags</p>
+					<p>Build every version of every module</p>
+					<p>Collect all the info on one page</p>
+					<p>Act as a directory of web services</p>
+					<p>Origami registry is <a href='http://registry.origami.ft.com'>public on the web</a> so anyone can collaboate with us</p>
+					<aside class='notes'>Move into demo - colors, header, tweet, responsive image</aside>
+				</section>
+
+				<section>
+					<h2>Build service</h2>
+					<p>Build any combo of modules <strong>on demand</strong></p>
+					<p>Build, bundle, compress, serve through CDN.</p>
+					<p>Allow developers to work <strong>without a build step</strong></p>
+					<aside class='notes'>Demo of web service</aside>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-purple-yellow.jpg'>
+					<h1>New tricks</h1>
+					<blockquote>Solutions for some of the problems we encountered</blockquote>
+				</section>
+
+				<section>
+					<h2>Polyfills</h2>
+					<p>How do you avoid having the same polyfills in all your components, and ensure they only load when needed?</p>
+				</section>
+
+				<section>
+					<h2>Declare in module metadata</h2>
+					<pre><code data-trim>
+{
+  "description": "Save for later button",
+  "browserFeatures": {
+    "required": [
+      "postmessage",
+      "localstorage"
+    ],
+    "optional": [
+      "webaudio"
+    ]
+  },
+}</code></pre>
+					<p>Express requirements as <a href='http://modernizr.com/'>Modernizr</a> test names.</p>
+				</section>
+
+				<section>
+					<h2>Cuts the mustard test</h2>
+					<pre><code data-trim>
+if (Modernizr.classlist && Modernizr.queryselector) {
+  Modernizr.load([
+    {
+      test : Modernizr.fontface,
+      nope : ['font-face-polyfill.js', 'font-face-polyfill.css']
+    },
+    {
+      test : Modernizr.websockets && window.JSON,
+      nope : 'websockets-polyfill.js',
+      complete : function() {
+        Modernizr.load('my-application-javascript-bundle.js');
+      }
+    }
+  ]);
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>Fallbacks</h2>
+					<p>How do you show NOSCRIPT content in browsers that 'support' script but fail to meet our criteria?</p>
+				</section>
+
+				<section>
+					<h2>Some crazy ideas</h2>
+					<p>IE doesn't allow inspection of NOSCRIPT tags, so</p>
+					<pre class='html'><code data-trim>
+&lt;![if gt IE 8]> &lt;noscript> &lt;![endif]>
+    &lt;div class="noscript">&lt;img ... />&lt;/div>
+&lt;![if gt IE 8]> &lt;/noscript> &lt;![endif]></code></pre>
+					<p>But we could also inspect a comment:</p>
+					<pre class='javascript'><code data-trim>
+&lt;script>document.write('&lt;' + '!--')&lt;/script>&lt;noscript>
+    &lt;img src="image.jpg">
+&lt;/noscript --></code></pre>
+				</section>
+
+				<section>
+					<h2>What we need is an element that:</h2>
+					<ul>
+						<li>has been supported since the dawn of time</li>
+						<li>has no useful semantic meaning that might be confusing</li>
+						<li>is rarely used, so that getElementsByTagName can find it efficiently</li>
+						<li>allows its content to be accessed by script</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>The new &lt;u>!</h2>
+					<p><code>&lt;u>&lt;div style="background:url(...)">&lt;/div>&lt;/u></code></p>
+					<p>Because it makes so much more sense if <code>&lt;u></code> means 'unsupported'</p>
+					<p style='font-size:80%'>(But doesn't work in browsers that don't support CSS backgrounds: IE 1-3, Opera &lt; 3)</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Hover</h2>
+						<p>What should a component do about hover-state?  What if the component is loaded on a touch screen?</p>
+						<pre><code data-trim>
+import 'o-hoverable/main';
+$o-hoverable-if-hover-enabled a:hover { ... }
+						</code></pre>
+						<pre><code data-trim>
+&lt;body class='o-hoverable-on'>
+ ...
+&lt;/body>
+						</code></pre>
+						<p><i class='icon-arrow-down'></i> <a href="#" class="navigate-down">Live demo</a> (ooo err)</p>
+					</section>
+					<section>
+						<iframe src='https://dl.dropboxusercontent.com/u/2272348/codez/expensivescroll/demo.html' class='stretch'></iframe>
+					</section>
+				</section>
+
+				<section>
+					<h2>Asset loading</h2>
+					<p>How does a component know what your URL structure is and where to load its static assets (images, fonts) from?</p>
+				</section>
+
+				<section>
+					<p>In the component</p>
+					<pre><code data-trim>
+var weatherUrl = require('o-assets').resolve('/data/2013/12/monthdata.csv', 'o-weather');
+xhr.open("get", weatherUrl);
+					</code></pre>
+					<p>In the site</p>
+					<pre><code data-trim>
+var assets = require('o-assets');
+assets.setGlobalPathPrefix('/resources');
+assets.setModulePaths({
+  "o-weather": "weather"
+});
+					</code></pre>
+					<p>Results in <code>/resources/weather/data/2013/12/monthdata.csv</code></p>
+				</section>
+
+				<section>
+					<h2>Silencing dependencies</h2>
+					<p>If you install "Tweet" and tweet requires "Grid", how do you avoid bundling the whole grid framework in the output CSS?</p>
+					<ul>
+						<li>Modules must use dependencies via mixins, not relying on concrete classes</li>
+						<li>Set <code>$o-MODULENAME-is-silent: false</code> when you want concrete classes</li>
+						<li>Otherwise you <strong>only</strong> get mixins, functions and variables</li>
+						<li>Build service makes <em>top level modules</em> noisy automatically</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Service health</h2>
+						<p>If you have a ton of decentralised web services, how do you track their availability, health and metrics?</p>
+						<ul>
+							<li>Scan subnets to discover machines</li>
+							<li>Request with no host header to a discovery endpoint</li>
+							<li>Reply with list of all name-based services hosted on that environment</li>
+							<li>Request /__health and /__metrics to get metrics from those services</li>
+							<li>Repeat every minute</li>
+							<li>Graph the hell out of it</li>
+						</ul>
+						<p><i class='icon-arrow-down'></i> <a href="#" class="navigate-down">Live demo</a> (ooo err)</p>
+					</section>
+					<section>
+						<iframe src='http://build.origami.ft.com/__health'></iframe>
+					</section>
+				</section>
+
+				<section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
+					<h1>That's it!</h1>
+					<h3>Contact me:</h3>
+					<ul>
+						<li>Email: <a href='mailto:andrew@labs.ft.com'>andrew@labs.ft.com</a></li>
+						<li>Twitter: <a href='http://twitter.com/@triblondon'>@triblondon</a>, <a href='http://twitter.com/@ftlabs'>@ftlabs</a></li>
+					</ul>
+					<p style='margin-top: 50px'>For jobs with FT Labs, visit <a href='http://labs.ft.com/jobs'>labs.ft.com/jobs</a></p>
+				</section>
+
+
+
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="lib/js/chart.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				width: 1280,
+    			height: 800,
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				theme: 'ftlabs',
+				transition: 'concave',
+				backgroundTransition: 'slide',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+			Reveal.addEventListener('slidechanged', function(e) {
+				if (e.currentSlide.classList.contains('big-quote')) {
+					var h1 = e.currentSlide.querySelector('h1');
+					if (h1 && !e.currentSlide.querySelector('span.bghead')) {
+						var bgh1 = document.createElement('span');
+						bgh1.classList.add('bghead');
+						bgh1.innerHTML = h1.innerHTML;
+						h1.parentNode.appendChild(bgh1);
+					}
+				}
+			});
+
+			// Charts
+			Reveal.addEventListener('chart1', function(e) {
+				var crt = document.getElementById("chart1");
+				crt.style.width = (crt.width = crt.parentNode.offsetWidth)+'px';
+				crt.style.height = (crt.height = crt.parentNode.offsetHeight)+'px';
+				new Chart(crt.getContext("2d")).Line({
+					labels : ["2011", "", "", "", "2012", "", "", "", "2013", "", ""],
+					datasets : [
+						{
+							strokeColor : "#00A9E0",
+							fillColor: 'none',
+							data : [381659, 356196, 344583, 333772, 319381, 297227, 287894, 286401, 273048, 258488, 241886]
+							},
+						{
+							strokeColor : "#FFA02F",
+							fillColor: 'none',
+							data : [223743, 229485, 247807, 267497, 285475, 301471, 312538, 315918, 328306, 343408, 386871]
+						}
+					]
+				}, {
+					scaleOverlay: true,
+					scaleOverride: true,
+					scaleSteps: 10,
+					scaleStepWidth : 50000,
+					scaleStartValue: 0,
+					bezierCurve: false,
+					scaleLineColor : "rgba(0,0,0,.3)",
+					scaleFontSize : 25,
+				});
+			});
+
+			// Charts
+			Reveal.addEventListener('rwd-demo', function(e) {
+				var ifr = document.getElementById("guardianiframe");
+				function move() {
+					setTimeout(function() {
+						var w = ifr.offsetWidth;
+						ifr.style.width = ((Math.random() * 800) + 400) + 'px';
+						if (document.documentElement.className.indexOf('rwd-demo') !== -1) move();
+					}, 3000);
+				}
+				move();
+			});
+
+		</script>
+
+	</body>
+</html>
