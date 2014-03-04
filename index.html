@@ -277,19 +277,11 @@ if (Modernizr.classlist && Modernizr.queryselector) {
 				</section>
 
 				<section>
-					<h2>What we need is an element that:</h2>
-					<ul>
-						<li>has been supported since the dawn of time</li>
-						<li>has no useful semantic meaning that might be confusing</li>
-						<li>is rarely used, so that getElementsByTagName can find it efficiently</li>
-						<li>allows its content to be accessed by script</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>The new &lt;u>!</h2>
-					<p><code>&lt;u>&lt;div style="background:url(...)">&lt;/div>&lt;/u></code></p>
-					<p>Because it makes so much more sense if <code>&lt;u></code> means 'unsupported'</p>
+					<h2>Chosen solution</h2>
+					<p><code>&lt;div class='o-nojs-fallback'>&lt;div style="background:url(...)">&lt;/div>&lt;/div></code></p>
+					<p>Toggle visibility using classes on <code>&lt;html></code> tag:</p>
+					<pre class='css'><code data-trim>
+.o-js .o-nojs-fallback { display: none }</code></pre>
 					<p style='font-size:80%'>(But doesn't work in browsers that don't support CSS backgrounds: IE 1-3, Opera &lt; 3)</p>
 				</section>
 
@@ -341,22 +333,14 @@ assets.setModulePaths({
 				</section>
 
 				<section>
-					<section>
-						<h2>Service health</h2>
-						<p>If you have a ton of decentralised web services, how do you track their availability, health and metrics?</p>
-						<ul>
-							<li>Scan subnets to discover machines</li>
-							<li>Request with no host header to a discovery endpoint</li>
-							<li>Reply with list of all name-based services hosted on that environment</li>
-							<li>Request /__health and /__metrics to get metrics from those services</li>
-							<li>Repeat every minute</li>
-							<li>Graph the hell out of it</li>
-						</ul>
-						<p><i class='icon-arrow-down'></i> <a href="#" class="navigate-down">Live demo</a> (ooo err)</p>
-					</section>
-					<section>
-						<iframe class='stretch' src='http://build.origami.ft.com/__health'></iframe>
-					</section>
+					<h2>Summary</h2>
+					<ul>
+						<li>We have super cool tech, but it's not consistent or well integrated</li>
+						<li>We set out to build a spec and a set of tools for a better standard</li>
+						<li>Registry &amp; build service make it really easy to use</li>
+						<li>It came with lots of interesting challenges</li>
+						<li>Working in public is rewarding and fun</li>
+					</ul>
 				</section>
 
 				<section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
