@@ -157,7 +157,7 @@ body {
   color: #FECB00; }
 .reveal .slides section.logo-title {
   text-align: left;
-  background: url(/css/theme/ftlabs_images/labs-logo.svg) 0 15px no-repeat;
+  background: url(ftlabs_images/labs-logo.svg) 0 15px no-repeat;
   background-size: 15%;
   padding-top: 0; }
   .reveal .slides section.logo-title > * {
