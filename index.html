@@ -83,7 +83,7 @@
 						<li>Systems not designed to work together / resistant to integration</li>
 						<li>Duplication</li>
 						<li>Experts needed everywhere</li>
-						<li>Learning cliff for newbies</li>
+						<li>Learning <del>curve</del> cliff for newbies</li>
 					</ul>
 				</section>
 
@@ -108,8 +108,8 @@
 
 				<section data-state='rwd-demo'>
 					<h2>Responsive media sites</h2>
-					<iframe id='guardianiframe' src='http://www.theguardian.com/uk?view=mobile' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
-					<aside class="notes">Many media companies already have responsive websites, Guardian a great example that we looked at in detail.</aside>
+					<iframe id='guardianiframe' src='http://m.bbc.com/news' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
+					<aside class="notes">Many media companies already have responsive websites, BBC a great example that we looked at in detail.</aside>
 				</section>
 
 				<section>
@@ -119,7 +119,7 @@
 						<li>MORE collaboration</li>
 						<li>MORE technical encapsulation (components!)</li>
 						<li>Be forwards-compatible with web components</li>
-						<li>Do that responsive malarky</li>
+						<li>Do responsive web design</li>
 					</ul>
 				</section>
 
@@ -182,14 +182,20 @@
 					<ul>
 						<li>Host your git repo anywhere</li>
 						<li>No single 'core' or 'common' codebase</li>
+						<li>Rules for namespacing and encapsulation</li>
 					</ul>
 				</section>
 
 				<section>
-					<h2>Cutting the mustard</h2>
-					<img src='content/browsersupport.svg' class='stretch' style='box-shadow:none' />
-					<p>A simple logical test that sets a <strong>movable</strong> bar for running application JavaScript</p>
-					<aside class='notes'>Set a CTM test for each product, above is primary, below is core.</aside>
+					<section>
+						<h2>"Cutting the mustard"</h2>
+						<img src='content/browsersupport.svg' class='stretch' style='box-shadow:none' />
+						<p>A simple logical test that sets a <strong>movable</strong> bar for running application JavaScript</p>
+						<aside class='notes'>Set a CTM test for each product, above is primary, below is core.</aside>
+					</section>
+					<section>
+						<code>if (querySelector in document) { ... }</code>
+					</section>
 				</section>
 
 				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
@@ -271,21 +277,7 @@ if (Modernizr.classlist && Modernizr.queryselector) {
 				</section>
 
 				<section>
-					<h2>Some crazy ideas</h2>
-					<p>IE doesn't allow inspection of NOSCRIPT tags, so</p>
-					<pre class='html'><code data-trim>
-&lt;![if gt IE 8]> &lt;noscript> &lt;![endif]>
-    &lt;div class="noscript">&lt;img ... />&lt;/div>
-&lt;![if gt IE 8]> &lt;/noscript> &lt;![endif]></code></pre>
-					<p>But we could also inspect a comment:</p>
-					<pre class='javascript'><code data-trim>
-&lt;script>document.write('&lt;' + '!--')&lt;/script>&lt;noscript>
-    &lt;img src="image.jpg">
-&lt;/noscript --></code></pre>
-				</section>
-
-				<section>
-					<h2>Chosen solution</h2>
+					<h2>Meet the new NOSCRIPT</h2>
 					<p><code>&lt;div class='o-nojs-fallback'>&lt;div style="background:url(...)">&lt;/div>&lt;/div></code></p>
 					<p>Toggle visibility using classes on <code>&lt;html></code> tag:</p>
 					<pre class='css'><code data-trim>
@@ -330,17 +322,6 @@ assets.setModulePaths({
 				</section>
 
 				<section>
-					<h2>Silencing dependencies</h2>
-					<p>If you install "Tweet" and tweet requires "Grid", how do you avoid bundling the whole grid framework in the output CSS?</p>
-					<ul>
-						<li>Modules must use dependencies via mixins, not relying on concrete classes</li>
-						<li>Set <code>$o-MODULENAME-is-silent: false</code> when you want concrete classes</li>
-						<li>Otherwise you <strong>only</strong> get mixins, functions and variables</li>
-						<li>Build service makes <em>top level modules</em> noisy automatically</li>
-					</ul>
-				</section>
-
-				<section>
 					<h2>Summary</h2>
 					<ul>
 						<li>We have super cool tech, but it's not consistent or well integrated</li>
@@ -358,7 +339,18 @@ assets.setModulePaths({
 						<li>Email: <a href='mailto:andrew@labs.ft.com'>andrew@labs.ft.com</a></li>
 						<li>Twitter: <a href='http://twitter.com/@triblondon'>@triblondon</a>, <a href='http://twitter.com/@ftlabs'>@ftlabs</a></li>
 					</ul>
-					<p style='margin-top: 50px'>For jobs with FT Labs, visit <a href='http://labs.ft.com/jobs'>labs.ft.com/jobs</a></p>
+					<p style='margin-top: 50px'>For jobs in Beijing, visit <a href='http://www.ftchinese.com/jobs'>www.ftchinese.com/jobs</a></p>
+					<p>For jobs in London, visit <a href='http://labs.ft.com/jobs'>labs.ft.com/jobs</a></p>
+				</section>
+
+				<section class='dark-background' data-background='content/edgebg.jpg'>
+					<img src='content/edgelogo.png' style='float:left' />
+					<h1 style='text-align:left; padding-left: 375px'>Edge conference</h1>
+					<h2 style='text-align:left; padding-left: 375px'>The edge of the web</h2>
+					<ul>
+						<li>San Francisco, September 20th, hosted by Adobe</li>
+						<li>Watch it live from 10am on <strong>edgeconf.com</strong></li>
+					</ul>
 				</section>
 
 
