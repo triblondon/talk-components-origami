@@ -37,16 +37,24 @@
 
 				<section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
 					<h1>Introducing Origami</h1>
-					<h3>Components and modules for front end sanity at scale</h3>
+					<h3>A practical journey to Web Components</h3>
 					<p>
 						<small>by Andrew Betts, FT Labs (<a href="http://trib.tv">trib.tv</a> / <a href="http://twitter.com/triblondon">@triblondon</a>)</small>
 					</p>
-					<aside class='notes'>This talk is about Origami, 9 month project at the FT to design a new way of making websites with components.</aside>
+					<aside class='notes'>This talk is about the FT's journey to web components.  It turns out that basing your whole architecture on components means changing not just a lot of your development practice, but also the way that we do design and product development too.  I realised there's a chance that this talk will make me look like the kind of guy that shouts randomly at birds in the park.</aside>
+				</section>
+
+				<section data-background='content/angry.jpg'>
+					<aside class='notes'>Rather like what I imagine Bill O'Reilly does when he's not shouting at liberals on Fox News.</aside>
+				</section>
+
+				<section data-background='content/jquery.jpg'>
+					<aside class='notes'>I made a commit to our front end development specification, banning our developers from using jQuery in components.  So I'm going to look in more detail later at why jQuery and other general purpose toolkits and frameworks may not make sense in a component world.</aside>
 				</section>
 
 				<section>
 					<p><img src='content/origami.png' class='stretch' style='box-shadow:none' /></p>
-					<aside class="notes">Now each web project is becoming more complex, our brand is increasingly a digital one, and people are interacting with it on a greater range of devices, increasing our testing cost.</aside>
+					<aside class="notes">Anyway, let's start with where we stand today and figure out why components are the way forward.  Each web project is becoming more complex, our brand is increasingly a digital one, and people are interacting with it on a greater range of devices, increasing our testing cost.</aside>
 				</section>
 
 				<section data-state="chart1">
@@ -57,40 +65,32 @@
 					<aside class='notes'>Problem that needs to be solved, because we're now a digital news publisher first, and a newspaper second.</aside>
 				</section>
 
-				<section>
-					<img src='content/article.png' class='stretch' />
-					<aside class="notes">Experts needed everywhere - a typical page has stuff on it from lots of teams.  Too much political encapulation, not enough technical encapsulation</aside>
+				<section data-state='rwd-demo'>
+					<h2>Responsive.</h2>
+					<iframe id='guardianiframe' src='http://www.theguardian.com/uk?view=mobile' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
+					<aside class="notes">Many media companies already have responsive websites, Guardian a great example.  But being responsive is not our biggest challenge.  There are far more important things to establish a healthy web development ecosystem.</aside>
 				</section>
 
-				<section data-background='content/complicatedchart.jpg'>
-					<aside class="notes">Sometimes I feel that things are so complicated that a new developer has no chance of getting their head around it.</aside>
+				<section>
+					<img src='content/article.png' class='stretch' />
+					<aside class="notes">Big webpages have always been a lot of 'bits'.  Historic lack of standards, you get things that are resistant to integration, too limited in scope, and at the same time, not as robust as they could be.</aside>
 				</section>
 
 				<section>
 					<img src='content/marketsdata-twice.jpg' class='stretch' style='max-width:100%' />
-					<aside class="notes">Lack of integration between things, often means stuff has to be done twice.  At least we only build web things, some people build the same things natively too.</aside>
-				</section>
-
-				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/red-blue.jpg'>
-					<blockquote>"It won't work in the <strong>web app</strong>"</blockquote>
-					<cite>--Everyone</cite>
-					<aside class='notes'>But we must be doing something wrong if this is the most popular expression in editorial.</aside>
+					<aside class="notes">Often means stuff has to be done twice.  Web app vs desktop site.  At least we only build web things, some people build the same things natively too.  Responsive is a feature, anyone can do that.  It's *how you approach* building things with web technologies that we are trying to change.  MB says devs have been talking about components since 2005.  But components are evolving.</aside>
 				</section>
 
 				<section>
-					<h2>Problems</h2>
-					<ul>
-						<li>Systems not designed to work together / resistant to integration</li>
-						<li>Duplication</li>
-						<li>Experts needed everywhere</li>
-						<li>Learning <del>curve</del> cliff for newbies</li>
-					</ul>
+					<h2>PDF style guides</h2>
+					<img src='content/apple-guidelines.png' class='stretch' />
+					<aside class="notes">Big websites used to publish large brand guidelines documents like this one from Apple.</aside>
 				</section>
 
 				<section>
 					<h2>Living style guides</h2>
 					<img src='content/codeforamerica.png' class='stretch' />
-					<aside class="notes">Living style guides provide reference implementations of UI designs so everyone is using the same code.  Already moving in the rigth direction.  (Code for America design by ClearLeft)</aside>
+					<aside class="notes">Living style guides provide reference implementations of UI designs so everyone is using the same code.  Already moving in the right direction.  (Code for America design by ClearLeft)</aside>
 				</section>
 
 				<section>
@@ -106,21 +106,21 @@
 					<aside class="notes">coming, but not here yet.  We need to be ready.</aside>
 				</section>
 
-				<section data-state='rwd-demo'>
-					<h2>Responsive media sites</h2>
-					<iframe id='guardianiframe' src='http://m.bbc.com/news' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
-					<aside class="notes">Many media companies already have responsive websites, BBC a great example that we looked at in detail.</aside>
+				<section data-background='content/prefab.jpg'>
+					<aside class='notes'></aside>
 				</section>
 
+
 				<section>
-					<h2>Objectives (no-brainer edition)</h2>
-					<ul>
-						<li>Build a living style guide</li>
-						<li>MORE collaboration</li>
-						<li>MORE technical encapsulation (components!)</li>
-						<li>Be forwards-compatible with web components</li>
-						<li>Do responsive web design</li>
-					</ul>
+					<h2>Objectives</h2>
+					<div class='two-col'>
+						<p><strong>Components</strong></p>
+						<p><strong>Standards</strong></p>
+						<p><strong>Collaboration</strong></p>
+						<p><strong>Encapsulation</strong></p>
+						<p><strong>Composition</strong></p>
+					</div>
+					<aside class='notes'>But not frameworks</aside>
 				</section>
 
 				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/purple-blue.jpg'>
@@ -172,18 +172,39 @@
 				</section>
 
 				<section>
-					<h2>Component build pattern</h2>
-					<img src='content/buildchain.svg' class='stretch' style='box-shadow:none' />
-					<aside class='notes'>Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
+					<h2>Syntax and encapsulation (JS)</h2>
+					<ul>
+						<li>No globals</li>
+						<li>No modifying DOM on parse (or outside of <strong>owned DOM</strong>)</li>
+						<li>Namespace events</li>
+						<li>jsHint</li>
+					</ul>
 				</section>
 
 				<section>
-					<h2>Decentralised and distributed</h2>
+					<h2>Syntax and encapsulation (CSS)</h2>
 					<ul>
-						<li>Host your git repo anywhere</li>
-						<li>No single 'core' or 'common' codebase</li>
-						<li>Rules for namespacing and encapsulation</li>
+						<li>Namespace prefixes for classes<ul>
+							<li>No styling out of namespace</li>
+						</ul></li>
+						<li>No IDs, ever</li>
+						<li>Minimise specificity.  Use BEM or descendent selectors<ul>
+							<li><code>o-tweet__avatar--verified</code></li>
+							<li><code>o-tweet > p</code></li>
+						</ul></li>
+						<li>Consider <strongs>states</strongs> (use ARIA):<ul>
+							<li>hover, focus, busy, selected, disabled, active, invalid, pressed, expanded</li>
+						</ul></li>
+						<li>Express responsive behaviours by exposing mixins, not using media queries:<ul>
+							<li><code>o-tweet--large</code>, <code>o-tweet--small</code></li>
+						</ul></li>
 					</ul>
+				</section>
+
+				<section>
+					<h2>Module build pattern</h2>
+					<img src='content/buildchain.svg' class='stretch' style='box-shadow:none' />
+					<aside class='notes'>Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
 				</section>
 
 				<section>
@@ -252,16 +273,17 @@
 				</section>
 
 				<section>
-					<h2>Cuts the mustard test</h2>
-					<pre><code data-trim>
-if (Modernizr.classlist && Modernizr.queryselector) {
+					<section>
+						<h2>Cuts the mustard test</h2>
+						<pre><code data-trim>
+if (Modernizr.classlist &amp;&amp; Modernizr.queryselector) {
   Modernizr.load([
     {
       test : Modernizr.fontface,
       nope : ['font-face-polyfill.js', 'font-face-polyfill.css']
     },
     {
-      test : Modernizr.websockets && window.JSON,
+      test : Modernizr.websockets &amp;&amp; window.JSON,
       nope : 'websockets-polyfill.js',
       complete : function() {
         Modernizr.load('my-application-javascript-bundle.js');
@@ -269,11 +291,26 @@ if (Modernizr.classlist && Modernizr.queryselector) {
     }
   ]);
 }</code></pre>
+					</section>
+
+					<section>
+						<h2>Or with server-side feature detection</h2>
+						<pre><code data-trim class='javascript'>
+if (querySelector in document) {
+    ['http://polyfill.io/', '/resources/js/my-application-bundle.js'].forEach(function(s) {
+        document.write('&lt;script src="'+s+'">&lt;/' + 'script>');
+    });
+}</code></pre>
+						<p>Yes, I used <code>document.write</code> <strong>and</strong> browser sniffing.  Chill.</p>
+					</section>
 				</section>
 
 				<section>
 					<h2>Fallbacks</h2>
 					<p>How do you show NOSCRIPT content in browsers that 'support' script but fail to meet our criteria?</p>
+					<aside class='notes'>
+						Polyfilling - fallback strategy that works within primary.   Other fallback strategies FEATURE GATING (do nothing) and FEATURE ALTERNATION (do something else).  In some cases gating fine, but sometimes you need to display some alternate content.  Previously NOSCRIPT.
+					</aside>
 				</section>
 
 				<section>
@@ -288,15 +325,18 @@ if (Modernizr.classlist && Modernizr.queryselector) {
 				<section>
 					<h2>Hover</h2>
 					<p>What should a component do about hover-state?  What if the component is loaded on a touch screen?</p>
+					<p>In the component:</p>
 					<pre><code data-trim>
 import 'o-hoverable/main';
 $o-hoverable-if-hover-enabled a:hover { ... }
 					</code></pre>
+					<p>In the product:</p>
 					<pre><code data-trim>
 &lt;body class='o-hoverable-on'>
 ...
 &lt;/body>
 					</code></pre>
+					<p>Yes, this requires <a href='https://github.com/Financial-Times/o-hoverable/blob/master/main.js'>detecting a mouse</a>.  Sue me.</p>
 				</section>
 
 				<section>
@@ -305,12 +345,12 @@ $o-hoverable-if-hover-enabled a:hover { ... }
 				</section>
 
 				<section>
-					<p>In the component</p>
+					<p>In the component:</p>
 					<pre><code data-trim>
 var weatherUrl = require('o-assets').resolve('/data/2013/12/monthdata.csv', 'o-weather');
 xhr.open("get", weatherUrl);
 					</code></pre>
-					<p>In the site</p>
+					<p>In the site:</p>
 					<pre><code data-trim>
 var assets = require('o-assets');
 assets.setGlobalPathPrefix('/resources');
@@ -339,12 +379,11 @@ assets.setModulePaths({
 						<li>Email: <a href='mailto:andrew@labs.ft.com'>andrew@labs.ft.com</a></li>
 						<li>Twitter: <a href='http://twitter.com/@triblondon'>@triblondon</a>, <a href='http://twitter.com/@ftlabs'>@ftlabs</a></li>
 					</ul>
-					<p style='margin-top: 50px'>For jobs in Beijing, visit <a href='http://www.ftchinese.com/jobs'>www.ftchinese.com/jobs</a></p>
-					<p>For jobs in London, visit <a href='http://labs.ft.com/jobs'>labs.ft.com/jobs</a></p>
+					<p style='margin-top: 50px'>For jobs in London, visit <a href='http://labs.ft.com/jobs'>labs.ft.com/jobs</a></p>
 				</section>
 
-				<section class='dark-background' data-background='content/edgebg.jpg'>
-					<img src='content/edgelogo.png' style='float:left' />
+				<section class='dark-background' data-background='http://edgeconf.com/images/events/2014-sf/bg_billboard.jpg'>
+					<img src='http://edgeconf.com/images/events/2014-sf/logo.png' style='float:left' />
 					<h1 style='text-align:left; padding-left: 375px'>Edge conference</h1>
 					<h2 style='text-align:left; padding-left: 375px'>The edge of the web</h2>
 					<ul>
@@ -427,6 +466,7 @@ assets.setModulePaths({
 					bezierCurve: false,
 					scaleLineColor : "rgba(0,0,0,.3)",
 					scaleFontSize : 25,
+					datasetFill: false
 				});
 			});
 
