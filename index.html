@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Components and modules - Andrew Betts</title>
+		<title>Origami workshop - Andrew Betts</title>
 
 		<meta name="description" content="A presentation about the FT's new Origami component strategy">
 		<meta name="author" content="Andrew Betts">
@@ -18,6 +18,17 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style>
+		.animate-list {
+			width:500px !important;
+			margin-top: 0 !important;
+			transition: margin-top 20s ease 2s !important;
+		}
+		.present .animate-list {
+			margin-top: -570% !important;
+		}
+		</style>
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -35,8 +46,18 @@
 		<div class="reveal">
 			<div class="slides">
 
+				<section>
+					<h2>Today's schedule</h2>
+					<table>
+					<tr><td>1500</td><td><strong>Origami Overview</strong></td><td>Andrew</td></tr>
+					<tr><td>1540</td><td><strong>UI components</strong></td><td>Alberto</td></tr>
+					<tr><td>1620</td><td><strong>Web services</strong></td><td>Sam</td></tr>
+					<tr><td>1640</td><td><strong>Hands-on workshops</strong></td><td>Andrew, Alberto, Sam, Kaelig</td></tr>
+					</table>
+				</section>
+
 				<section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
-					<h1>Introducing Origami</h1>
+					<h1>Origami workshop</h1>
 					<h3>A practical journey to Web Components</h3>
 					<p>
 						<small>by Andrew Betts, FT Labs (<a href="http://trib.tv">trib.tv</a> / <a href="http://twitter.com/triblondon">@triblondon</a>)</small>
@@ -44,47 +65,71 @@
 					<aside class='notes'>This talk is about the FT's journey to web components.  It turns out that basing your whole architecture on components means changing not just a lot of your development practice, but also the way that we do design and product development too.  I realised there's a chance that this talk will make me look like the kind of guy that shouts randomly at birds in the park.</aside>
 				</section>
 
-				<section data-background='content/angry.jpg'>
-					<aside class='notes'>Rather like what I imagine Bill O'Reilly does when he's not shouting at liberals on Fox News.</aside>
-				</section>
-
-				<section data-background='content/jquery.jpg'>
-					<aside class='notes'>I made a commit to our front end development specification, banning our developers from using jQuery in components.  So I'm going to look in more detail later at why jQuery and other general purpose toolkits and frameworks may not make sense in a component world.</aside>
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>Challenges</h1>
+					<blockquote>Building websites is harder today than ever before.  Why?</blockquote>
 				</section>
 
 				<section>
+					<h2>Multiple formats</h2>
 					<p><img src='content/origami.png' class='stretch' style='box-shadow:none' /></p>
 					<aside class="notes">Anyway, let's start with where we stand today and figure out why components are the way forward.  Each web project is becoming more complex, our brand is increasingly a digital one, and people are interacting with it on a greater range of devices, increasing our testing cost.</aside>
 				</section>
 
-				<section data-state="chart1">
-					<h2>Paid readership, digital vs print</h2>
-					<div class='stretch'>
-						<canvas id="chart1" style='width:100%; height:100%'></canvas>
-					</div>
-					<aside class='notes'>Problem that needs to be solved, because we're now a digital news publisher first, and a newspaper second.</aside>
+				<section>
+					<h2>Multiple formats</h2>
+					<p><img src='content/traffic.png' /></p>
+				</section>
+
+				<section>
+					<p><img src='content/swissotel-select.png' class='animate-list' /></p>
+				</section>
+
+				<section>
+					<h2>Better usability</h2>
+					<p><img src='content/alice-selectbox.png' /></p>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/purple-blue.jpg'>
+					<blockquote>We are not here to do <strong>easy things</strong> for people who are <strong>like us</strong></blockquote>
+					<cite>Alice Bartlett</cite>
+				</section>
+
+				<section class='dark-background' data-background='content/delays.png'>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>Problems at FT</h1>
+					<blockquote>Meeting the challenges of modern front end development can lead to problems</blockquote>
+				</section>
+
+				<section>
+					<h2>Problems</h2>
+					<ul class='steplist'>
+						<li>Repeating work</li>
+						<li>Unable to let go of old tech</li>
+						<li>Experts needed everywhere</li>
+						<li>Square pegs, round holes</li>
+						<li>Learning 'cliff'</li>
+					</ul>
+				</section>
+
+				<section class='dark-background' data-background='content/buttons.jpg'></section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>Goals</h1>
+					<blockquote>What should we be aiming for?</blockquote>
+				</section>
+
+				<section class='dark-background' data-background='css/theme/ftlabs_images/blue-orange-yellow.jpg'>
+					<h1>Consistent brand experience</h1>
 				</section>
 
 				<section data-state='rwd-demo'>
-					<h2>Responsive.</h2>
+					<h2>Not just about being responsive</h2>
+					<p>(we have lots of websites to make responsive)</p>
 					<iframe id='guardianiframe' src='http://www.theguardian.com/uk?view=mobile' class='stretch' style='margin: 0 auto; transition: width 1s'></iframe>
 					<aside class="notes">Many media companies already have responsive websites, Guardian a great example.  But being responsive is not our biggest challenge.  There are far more important things to establish a healthy web development ecosystem.</aside>
-				</section>
-
-				<section>
-					<img src='content/article.png' class='stretch' />
-					<aside class="notes">Big webpages have always been a lot of 'bits'.  Historic lack of standards, you get things that are resistant to integration, too limited in scope, and at the same time, not as robust as they could be.</aside>
-				</section>
-
-				<section>
-					<img src='content/marketsdata-twice.jpg' class='stretch' style='max-width:100%' />
-					<aside class="notes">Often means stuff has to be done twice.  Web app vs desktop site.  At least we only build web things, some people build the same things natively too.  Responsive is a feature, anyone can do that.  It's *how you approach* building things with web technologies that we are trying to change.  MB says devs have been talking about components since 2005.  But components are evolving.</aside>
-				</section>
-
-				<section>
-					<h2>PDF style guides</h2>
-					<img src='content/apple-guidelines.png' class='stretch' />
-					<aside class="notes">Big websites used to publish large brand guidelines documents like this one from Apple.</aside>
 				</section>
 
 				<section>
@@ -94,67 +139,49 @@
 				</section>
 
 				<section>
-					<h2>Component frameworks</h2>
-					<img src='content/react.png' class='stretch' />
-					<p>Also our own <a href='https://github.com/ftlabs/fruitmachine'>Fruit Machine</a></p>
-					<aside class="notes">Start with separating style from content, then behaviour, now we're grouping chunks of markup, style and behaviour into discrete units of functionality (making the building blocks bigger)</aside>
-				</section>
-
-				<section>
-					<h2>Web components</h2>
-					<img src='content/webcomponents.png' class='stretch' style='box-shadow:none' />
-					<aside class="notes">coming, but not here yet.  We need to be ready.</aside>
-				</section>
-
-				<section data-background='content/prefab.jpg'>
-					<aside class='notes'></aside>
-				</section>
-
-
-				<section>
 					<h2>Objectives</h2>
 					<div class='two-col'>
 						<p><strong>Components</strong></p>
 						<p><strong>Standards</strong></p>
 						<p><strong>Collaboration</strong></p>
 						<p><strong>Encapsulation</strong></p>
-						<p><strong>Composition</strong></p>
 					</div>
 					<aside class='notes'>But not frameworks</aside>
 				</section>
 
-				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/purple-blue.jpg'>
-					<h1>Going further</h1>
-				</section>
-
 				<section data-background='content/legacy.jpg'>
-					<h1 class='glow'>1. Rescue the old stuff</h1>
+					<h1 class='glow'>Works with the old stuff</h1>
 					<aside class='notes'>We have 600 domains, 800 subdomains of ft.com.  We have millions of readers who like those sites, so we should be able to apply the benefits of the new stuff to those older sites.</aside>
 				</section>
 
 				<section data-background='content/monolith.png'>
-					<h1 class='glow'>2. Don't build a monolith</h1>
+					<h1 class='glow'>Don't build a monolith</h1>
 					<aside class='notes'>A lot of things we looked at were big, centralised solutions.  I've learned over the years that if you make a 'core' thing and make it a dependency of everything you do, it becomes a liability.</aside>
 				</section>
 
 				<section data-background='content/evolutionweb.png'>
-					<h1 class='glow'>3. Raise the bar</h1>
+					<h1 class='glow'>Raise the bar</h1>
 					<aside class='notes'>Current bar: noscript.  Progressive enhance, from where?  Choose a new baseline a few years old.  Rolling window of support for primary functionality.</aside>
 				</section>
 
 				<section data-background='content/bigredbutton.jpg'>
-					<h1 class='glow'>4. Make it easy</h1>
+					<h1 class='glow'>Make it easy</h1>
 					<aside class='notes'>Hate: frameworks, opinionated solutions, 'beautiful' things.  Love: Tools to support standards.  Make it push-button easy to use the standard stuff</aside>
 				</section>
 
 				<section>
-					<h1 style='color: #F7DCC3;font-weight: normal;font-size: 85px;text-shadow: 3px 0px 6px rgb(104, 83, 64);font-family: "Open sans";'><img src="data:image/svg+xml;utf-8,<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='188' height='61' viewBox='0 0 188 61' preserveAspectRatio='xMidYMid meet'><g transform='translate(0,61) scale(0.1,-0.1)' fill='%233b3b3b' stroke='none'><path d='M40 580 c0 -5 7 -10 15 -10 8 0 24 -9 35 -20 19 -19 20 -33 20 -239 0 -234 -3 -251 -51 -251 -10 0 -19 -7 -19 -15 0 -13 21 -15 130 -15 109 0 130 2 130 15 0 9 -9 15 -24 15 -47 0 -56 22 -56 140 l0 109 48 -5 c62 -6 89 -21 101 -55 20 -57 31 -31 31 71 0 82 -3 100 -15 100 -8 0 -15 -9 -15 -19 0 -31 -38 -51 -98 -51 l-53 0 3 98 3 97 77 3 c102 4 138 -6 163 -46 32 -50 46 -41 44 28 l-2 60 -233 0 c-149 0 -234 -4 -234 -10z' /><path d='M540 568 c-1 -13 -3 -40 -6 -60 -4 -30 -2 -38 10 -38 8 0 21 12 28 27 17 36 52 53 111 53 l47 0 0 -229 c0 -249 -3 -261 -56 -261 -15 0 -24 -6 -24 -15 0 -13 22 -15 135 -15 113 0 135 2 135 15 0 9 -9 15 -24 15 -53 0 -56 12 -56 261 l0 229 54 0 c57 0 99 -23 111 -60 4 -11 13 -20 22 -20 13 0 14 9 9 53 -3 28 -6 55 -6 60 0 4 -110 7 -245 7 l-245 0 0 -22z' /><path d='M1405 577 c-27 -7 -57 -27 -92 -64 -29 -29 -61 -53 -72 -53 -21 0 -71 -53 -71 -75 0 -28 61 -85 89 -85 34 0 75 41 77 78 2 49 36 40 89 -23 l48 -56 32 31 33 32 -58 51 c-32 29 -59 60 -59 69 -1 26 39 48 86 48 35 0 43 3 43 19 0 14 -12 22 -44 30 -51 12 -47 13 -101 -2z' fill='%23787067' /><path d='M1693 575 c-40 -17 -67 -67 -60 -111 5 -31 0 -38 -141 -166 -80 -73 -155 -140 -165 -149 -41 -33 -11 -109 43 -109 22 0 53 29 176 165 143 158 151 165 187 165 75 0 117 42 117 117 l0 35 -40 -36 c-42 -37 -48 -40 -74 -30 -27 10 -18 48 19 84 31 30 33 35 18 42 -27 10 -45 9 -80 -7z' fill='%23525252' /><path d='M1601 243 c-17 -21 -30 -42 -28 -46 7 -23 125 -147 149 -157 45 -20 93 23 81 71 -3 10 -42 52 -88 93 l-83 76 -31 -37z' fill='%23787067' /></g></svg>" style="vertical-align: middle;box-shadow: none;display: block;margin: 0 auto 15px auto;width: 300px;" /> Origami</h1>
+					<h2>Full set of principles available at <a href='http://origami.ft.com/docs/overview/principles'>origami.ft.com<wbr/>/docs/overview/principles</a></h2>
+				</section>
+
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>The Origami way</h1>
+					<blockquote>How does Origami meet these goals?</blockquote>
 				</section>
 
 				<section>
 					<h2>Origami is...</h2>
 					<ul>
-						<li>Specification (<a href='http://origami.ft.com'>origami.ft.com</a>)</li>
+						<li>A Specification (<a href='http://origami.ft.com'>origami.ft.com</a>)</li>
 						<li>Tools<ul>
 							<li>Registry</li>
 							<li>Build service</li>
@@ -169,6 +196,24 @@
 				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
 					<h1>The spec</h1>
 					<blockquote><strong>Agree a standard</strong> for building modules and services</blockquote>
+				</section>
+
+				<section>
+					<h2>Module build pattern</h2>
+					<img src='content/build.png' class='stretch' style='box-shadow:none' />
+					<aside class='notes'>Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>"Cutting the mustard"</h2>
+						<img src='content/browsersupport.svg' class='stretch' style='box-shadow:none' />
+						<p>A simple logical test that sets a <strong>movable</strong> bar for running application JavaScript</p>
+						<aside class='notes'>Set a CTM test for each product, above is primary, below is core.</aside>
+					</section>
+					<section>
+						<code>if ('querySelector' in document &amp;&amp; 'localStorage' in window &amp;&amp; 'addEventListener' in window) { ... }</code>
+					</section>
 				</section>
 
 				<section>
@@ -201,28 +246,26 @@
 					</ul>
 				</section>
 
-				<section>
-					<h2>Module build pattern</h2>
-					<img src='content/buildchain.svg' class='stretch' style='box-shadow:none' />
-					<aside class='notes'>Bower because does not require package to be aware of it, does not require registry (and still supports semver) and dedupes deps by default.  CommonJS+browserify because we have a preference for bundles over incremental loading, atomic runtime code, works offline.  SASS simply due to overwhelming popularity.</aside>
-				</section>
-
-				<section>
-					<section>
-						<h2>"Cutting the mustard"</h2>
-						<img src='content/browsersupport.svg' class='stretch' style='box-shadow:none' />
-						<p>A simple logical test that sets a <strong>movable</strong> bar for running application JavaScript</p>
-						<aside class='notes'>Set a CTM test for each product, above is primary, below is core.</aside>
-					</section>
-					<section>
-						<code>if (querySelector in document) { ... }</code>
-					</section>
-				</section>
+				<section><img src='http://triblondon.github.io/talk-origami/content/semver.png' class='stretch'></section>
 
 				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
 					<h1>The tools</h1>
 					<blockquote><strong>Make it easy</strong> to comply with the spec requirements</blockquote>
 				</section>
+
+				<section>
+					<h2>Build tool</h2>
+					<p style='margin: 2em 0; '>
+					<code style='background-color: black; color: white'>&gt; origami-build-tools install</code>
+					</p>
+					<p>Build modules in your own product</p>
+					<p>Serve them locally</p>
+					<p>Compile as part of your own JavaScript and CSS bundles</p>
+					<p>Auto-install all dependencies, tools, linters etc.</p>
+				</section>
+
+				<section class='dark-background' data-background='content/obt.jpg'></section>
+				<section class='dark-background' data-background='content/obt-gulp.jpg'></section>
 
 				<section>
 					<h2>Registry</h2>
@@ -244,132 +287,9 @@
 					<p>Allow developers to work <strong>without a build step</strong></p>
 				</section>
 
-				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-purple-yellow.jpg'>
-					<h1>New tricks</h1>
-					<blockquote>Solutions for some of the problems we encountered</blockquote>
-				</section>
-
-				<section>
-					<h2>Polyfills</h2>
-					<p>How do you avoid having the same polyfills in all your components, and ensure they only load when needed?</p>
-				</section>
-
-				<section>
-					<h2>Declare in module metadata</h2>
-					<pre><code data-trim>
-{
-  "description": "Save for later button",
-  "browserFeatures": {
-    "required": [
-      "postmessage",
-      "localstorage"
-    ],
-    "optional": [
-      "webaudio"
-    ]
-  },
-}</code></pre>
-					<p>Express requirements as <a href='http://modernizr.com/'>Modernizr</a> test names.</p>
-				</section>
-
-				<section>
-					<section>
-						<h2>Cuts the mustard test</h2>
-						<pre><code data-trim>
-if (Modernizr.classlist &amp;&amp; Modernizr.queryselector) {
-  Modernizr.load([
-    {
-      test : Modernizr.fontface,
-      nope : ['font-face-polyfill.js', 'font-face-polyfill.css']
-    },
-    {
-      test : Modernizr.websockets &amp;&amp; window.JSON,
-      nope : 'websockets-polyfill.js',
-      complete : function() {
-        Modernizr.load('my-application-javascript-bundle.js');
-      }
-    }
-  ]);
-}</code></pre>
-					</section>
-
-					<section>
-						<h2>Or with server-side feature detection</h2>
-						<pre><code data-trim class='javascript'>
-if (querySelector in document) {
-    ['http://polyfill.io/', '/resources/js/my-application-bundle.js'].forEach(function(s) {
-        document.write('&lt;script src="'+s+'">&lt;/' + 'script>');
-    });
-}</code></pre>
-						<p>Yes, I used <code>document.write</code> <strong>and</strong> browser sniffing.  Chill.</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Fallbacks</h2>
-					<p>How do you show NOSCRIPT content in browsers that 'support' script but fail to meet our criteria?</p>
-					<aside class='notes'>
-						Polyfilling - fallback strategy that works within primary.   Other fallback strategies FEATURE GATING (do nothing) and FEATURE ALTERNATION (do something else).  In some cases gating fine, but sometimes you need to display some alternate content.  Previously NOSCRIPT.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Meet the new NOSCRIPT</h2>
-					<p><code>&lt;div class='o-nojs-fallback'>&lt;div style="background:url(...)">&lt;/div>&lt;/div></code></p>
-					<p>Toggle visibility using classes on <code>&lt;html></code> tag:</p>
-					<pre class='css'><code data-trim>
-.o-js .o-nojs-fallback { display: none }</code></pre>
-					<p style='font-size:80%'>(But doesn't work in browsers that don't support CSS backgrounds: IE 1-3, Opera &lt; 3)</p>
-				</section>
-
-				<section>
-					<h2>Hover</h2>
-					<p>What should a component do about hover-state?  What if the component is loaded on a touch screen?</p>
-					<p>In the component:</p>
-					<pre><code data-trim>
-import 'o-hoverable/main';
-$o-hoverable-if-hover-enabled a:hover { ... }
-					</code></pre>
-					<p>In the product:</p>
-					<pre><code data-trim>
-&lt;body class='o-hoverable-on'>
-...
-&lt;/body>
-					</code></pre>
-					<p>Yes, this requires <a href='https://github.com/Financial-Times/o-hoverable/blob/master/main.js'>detecting a mouse</a>.  Sue me.</p>
-				</section>
-
-				<section>
-					<h2>Asset loading</h2>
-					<p>How does a component know what your URL structure is and where to load its static assets (images, fonts) from?</p>
-				</section>
-
-				<section>
-					<p>In the component:</p>
-					<pre><code data-trim>
-var weatherUrl = require('o-assets').resolve('/data/2013/12/monthdata.csv', 'o-weather');
-xhr.open("get", weatherUrl);
-					</code></pre>
-					<p>In the site:</p>
-					<pre><code data-trim>
-var assets = require('o-assets');
-assets.setGlobalPathPrefix('/resources');
-assets.setModulePaths({
-  "o-weather": "weather"
-});
-					</code></pre>
-					<p>Results in <code>/resources/weather/data/2013/12/monthdata.csv</code></p>
-				</section>
-
-				<section>
-					<h2>Summary</h2>
-					<ul>
-						<li>We have super cool tech, but it's not consistent or well integrated</li>
-						<li>We set out to build a spec and a set of tools for a better standard</li>
-						<li>Registry &amp; build service make it really easy to use</li>
-						<li>It came with lots of interesting challenges</li>
-						<li>Working in public is rewarding and fun</li>
-					</ul>
+				<section class='dark-background big-quote' data-background='css/theme/ftlabs_images/blue-green-yellow.jpg'>
+					<h1>Build process walkthrough</h1>
+					<blockquote>Build a page using Origami components</blockquote>
 				</section>
 
 				<section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
@@ -381,20 +301,6 @@ assets.setModulePaths({
 					</ul>
 					<p style='margin-top: 50px'>For jobs in London, visit <a href='http://labs.ft.com/jobs'>labs.ft.com/jobs</a></p>
 				</section>
-
-				<section class='dark-background' data-background='http://edgeconf.com/images/events/2014-sf/bg_billboard.jpg'>
-					<img src='http://edgeconf.com/images/events/2014-sf/logo.png' style='float:left' />
-					<h1 style='text-align:left; padding-left: 375px'>Edge conference</h1>
-					<h2 style='text-align:left; padding-left: 375px'>The edge of the web</h2>
-					<ul>
-						<li>San Francisco, September 20th, hosted by Adobe</li>
-						<li>Watch it live from 10am on <strong>edgeconf.com</strong></li>
-					</ul>
-				</section>
-
-
-
-
 
 			</div>
 
